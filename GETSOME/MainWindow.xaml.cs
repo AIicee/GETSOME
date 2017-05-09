@@ -23,6 +23,8 @@ namespace GETSOME
         public MainWindow()
         {
             InitializeComponent();
+			DatabaseAccess da = new DatabaseAccess();
+			da.UpdateDataGrid(dataGridAll);
         }
     }
 }
