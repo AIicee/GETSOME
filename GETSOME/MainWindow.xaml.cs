@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,11 +21,26 @@ namespace GETSOME
     /// </summary>
     public partial class MainWindow : Window
     {
+		DatabaseAccess da;
         public MainWindow()
         {
+			da = new DatabaseAccess();
             InitializeComponent();
-			DatabaseAccess da = new DatabaseAccess();
+			// Afdeling combobox
+			
+			comboBoxAfdeling.ItemsSource = da.GetAfdelinger();
+			comboBoxAfdeling.SelectedIndex = 0;
+		}
+
+		private void comboBoxAfdeling_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			comboBoxSaelger.ItemsSource = da.GetSaelgere(comboBoxAfdeling.SelectedValue.ToString());
+			comboBoxSaelger.SelectedIndex = 0;
+		}
+
+		private void comboBoxSaelger_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
 			da.UpdateDataGrid(dataGridAll);
-        }
-    }
+		}
+	}
 }

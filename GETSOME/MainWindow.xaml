@@ -41,8 +41,8 @@
 			</TabItem>
 		</TabControl>
         <ComboBox x:Name="comboBoxAfdeling" 
-                  HorizontalAlignment="Right" Margin="0,50,30,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="comboBoxSælger" Margin="0,90,30,0" VerticalAlignment="Top" Width="120" HorizontalAlignment="Right"/>
+                  HorizontalAlignment="Right" Margin="0,50,30,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxAfdeling_SelectionChanged"/>
+        <ComboBox x:Name="comboBoxSaelger" Margin="0,90,30,0" VerticalAlignment="Top" Width="120" HorizontalAlignment="Right" SelectionChanged="comboBoxSaelger_SelectionChanged"/>
 
     </Grid>
 </Window>
