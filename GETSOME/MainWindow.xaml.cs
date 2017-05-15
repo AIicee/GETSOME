@@ -27,20 +27,30 @@ namespace GETSOME
 			da = new DatabaseAccess();
             InitializeComponent();
 			// Afdeling combobox
-			
+
+			comboBoxAfdeling.DisplayMemberPath = "_Key";
+			comboBoxAfdeling.SelectedValuePath = "_Value";
 			comboBoxAfdeling.ItemsSource = da.GetAfdelinger();
 			comboBoxAfdeling.SelectedIndex = 0;
 		}
 
 		private void comboBoxAfdeling_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			comboBoxSaelger.ItemsSource = da.GetSaelgere(comboBoxAfdeling.SelectedValue.ToString());
+			comboBoxSaelger.DisplayMemberPath = "_Key";
+			comboBoxSaelger.SelectedValuePath = "_Value";
+			ComboBoxPairs cbp = (ComboBoxPairs)comboBoxAfdeling.SelectedItem;
+			comboBoxSaelger.ItemsSource = da.GetSaelgere(cbp._Value);
 			comboBoxSaelger.SelectedIndex = 0;
 		}
 
 		private void comboBoxSaelger_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			da.UpdateDataGrid(dataGridAll);
+		}
+
+		private void ButtonUpdateDataGrid_Click(object sender, RoutedEventArgs e)
+		{
+			
 		}
 	}
 }

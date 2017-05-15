@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000">
 	<Grid>
-        <TabControl x:Name="tabControl" Margin="20,25,170,25">
+        <TabControl x:Name="tabControl" Margin="20,25,200,25">
             <TabItem Header="All">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
@@ -24,7 +24,7 @@
 							<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
 							<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
 							<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-							<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato"/>
+							<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending"/>
 							<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 							<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
 							<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
@@ -40,9 +40,13 @@
 				<Grid Background="#FFE5E5E5"/>
 			</TabItem>
 		</TabControl>
-        <ComboBox x:Name="comboBoxAfdeling" 
-                  HorizontalAlignment="Right" Margin="0,50,30,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBoxAfdeling_SelectionChanged"/>
-        <ComboBox x:Name="comboBoxSaelger" Margin="0,90,30,0" VerticalAlignment="Top" Width="120" HorizontalAlignment="Right" SelectionChanged="comboBoxSaelger_SelectionChanged"/>
-
+		<StackPanel Width="150" Height="200" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,30,0">
+			<TextBlock Text="Afdeling:" Margin="0,0,0,5"/>
+			<ComboBox x:Name="comboBoxAfdeling" SelectionChanged="comboBoxAfdeling_SelectionChanged"/>
+			<TextBlock Text="Sælger:" Margin="0,10,0,5"/>
+			<ComboBox x:Name="comboBoxSaelger" SelectionChanged="comboBoxSaelger_SelectionChanged"/>
+			<Button x:Name="ButtonUpdateDatagrid" Height="30" Width="30" Margin="0,20,0,0" HorizontalAlignment="Right" Content="OK" Click="ButtonUpdateDataGrid_Click" />
+		</StackPanel>
+        
     </Grid>
 </Window>

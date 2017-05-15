@@ -63,6 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ComboBoxPairs.cs" />
     <Compile Include="DatabaseAccess.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="MainWindow.xaml.cs">

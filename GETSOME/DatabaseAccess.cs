@@ -32,11 +32,11 @@ namespace GETSOME
 			return true;
 		}
 
-		public List<string> GetAfdelinger()
+		public List<ComboBoxPairs> GetAfdelinger()
 		{
 			
-			List<string> list = new List<string>();
-			list.Add("All");
+			List<ComboBoxPairs> list = new List<ComboBoxPairs>();
+			list.Add(new ComboBoxPairs("All", "0"));
 			SqlConnection sql = new SqlConnection("Data Source=ealdb1.eal.local;Initial Catalog=EJL34_DB;User ID=ejl34_usr;Password=Baz1nga34");
 			try
 			{
@@ -47,24 +47,24 @@ namespace GETSOME
 				MessageBox.Show("Der skete en fejl.");
 				return list;
 			}
-			string query = "SELECT ID, Navn FROM Karvil_Afdeling";
+			string query = "SELECT ID, Navn FROM Karvil_Afdeling ORDER BY Navn ASC";
 			SqlCommand cmd = new SqlCommand(query, sql);
 			SqlDataReader reader = cmd.ExecuteReader();
 			if (reader.HasRows)
 			{
 				while (reader.Read())
 				{
-					list.Add(reader["Navn"].ToString());
+					list.Add(new ComboBoxPairs(reader["Navn"].ToString(), reader["ID"].ToString()));
 				}
 			}
 			sql.Close();
 			return list;
 		}
 
-		public List<string> GetSaelgere(string afdeling)
+		public List<ComboBoxPairs> GetSaelgere(string afdeling)
 		{
-			List<string> list = new List<string>();
-			list.Add("All");
+			List<ComboBoxPairs> list = new List<ComboBoxPairs>();
+			list.Add(new ComboBoxPairs("All", "0"));
 			SqlConnection sql = new SqlConnection("Data Source=ealdb1.eal.local;Initial Catalog=EJL34_DB;User ID=ejl34_usr;Password=Baz1nga34");
 			try
 			{
@@ -76,26 +76,13 @@ namespace GETSOME
 				MessageBox.Show("Der skete en fejl.");
 				return list;
 			}
-			int afdelingID = 0;
-			if(afdeling != "All")
-			{
-				sql.Open();
-				string queryafdeling = "SELECT ID, Navn FROM Karvil_Afdeling WHERE Navn = '"+afdeling+"'";
-				SqlCommand cmdafdeling = new SqlCommand(queryafdeling, sql);
-				SqlDataReader readerafdeling = cmdafdeling.ExecuteReader();
-				if (readerafdeling.HasRows)
-				{
-					readerafdeling.Read();
-					afdelingID = Convert.ToInt32(readerafdeling["ID"]);
-				}
-				sql.Close();
-			}
-
+			
 			string query = "SELECT ID, Navn FROM Karvil_Saelger";
-			if(afdelingID != 0)
+			if(afdeling != "0")
 			{
-				query += " WHERE AfdelingID = "+afdelingID;
+				query += " WHERE AfdelingID = "+afdeling;
 			}
+			query += " ORDER BY Navn ASC";
 
 			sql.Open();
 			SqlCommand cmd = new SqlCommand(query, sql);
@@ -104,7 +91,7 @@ namespace GETSOME
 			{
 				while (reader.Read())
 				{
-					list.Add(reader["Navn"].ToString());
+					list.Add(new ComboBoxPairs(reader["Navn"].ToString(), reader["ID"].ToString()));
 				}
 			}
 			sql.Close();
@@ -126,6 +113,8 @@ namespace GETSOME
 				MessageBox.Show("Der skete en fejl.");
 			}
 			string query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID";
+			//ComboBoxPairs cbp = (ComboBoxPairs)comboBoxAfdeling.SelectedItem;
+			query += " ORDER BY Karvil_Kunder.Dato ASC";
 			SqlCommand cmd = new SqlCommand(query, sql);
 			SqlDataReader reader = cmd.ExecuteReader();
 			if (reader.HasRows)
