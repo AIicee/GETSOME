@@ -11,11 +11,20 @@ using System.Windows.Media;
 
 namespace GETSOME
 {
-
+	public enum DataGridTab
+	{
+		All,
+		Done,
+		AllAndDone,
+		Red,
+		Yellow,
+		Green,
+		Expired
+	}
 	public class DatabaseAccess
 	{
 
-		bool SetAsContacted(Kunde kunde)
+		public bool SetAsContacted(Kunde kunde)
 		{
 			SqlConnection sql = new SqlConnection("Data Source=ealdb1.eal.local;Initial Catalog=EJL34_DB;User ID=ejl34_usr;Password=Baz1nga34");
 			try
@@ -100,7 +109,7 @@ namespace GETSOME
 			return list;
 		}
 
-		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger)
+		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab)
 		{
 			dg.Items.Clear();
 			dg.Items.Refresh();
@@ -114,19 +123,48 @@ namespace GETSOME
 			{
 				MessageBox.Show("Der skete en fejl.");
 			}
-			string query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID";
+
+
+			string query = "";
+
+			switch (tab)
+			{
+				case DataGridTab.All:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14 ";
+					break;
+				case DataGridTab.Done:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 ";
+					break;
+				case DataGridTab.AllAndDone:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE (Karvil_Kunder.Kontaktet = 0 OR Karvil_Kunder.Kontaktet = 1) ";
+					break;
+				case DataGridTab.Red:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 12 ";
+					break;
+				case DataGridTab.Yellow:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 7 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 12 ";
+					break;
+				case DataGridTab.Green:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 7 ";
+					break;
+				case DataGridTab.Expired:
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 14 ";
+					break;
+
+			}
+
 			ComboBoxPairs cbpAfdeling = (ComboBoxPairs)cbAfdeling.SelectedItem;
 			ComboBoxPairs cbpSaelger = (ComboBoxPairs)cbSaelger.SelectedItem;
 			if (cbpAfdeling._Value != "0")
 			{
-				query += " WHERE Karvil_Saelger.AfdelingID = "+cbpAfdeling._Value;
+				query += " AND Karvil_Saelger.AfdelingID = "+cbpAfdeling._Value;
 				if(cbpSaelger._Value != "0")
 				{
 					query += " AND Karvil_Kunder.SaelgerID = "+cbpSaelger._Value;
 				}
 			}else if (cbpSaelger._Value != "0")
 			{
-				query += " WHERE Karvil_Kunder.SaelgerID = " + cbpSaelger._Value;
+				query += " AND Karvil_Kunder.SaelgerID = " + cbpSaelger._Value;
 			}
 			query += " ORDER BY Karvil_Kunder.Dato ASC";
 			SqlCommand cmd = new SqlCommand(query, sql);

@@ -51,7 +51,15 @@ namespace GETSOME
 
 		private void ButtonUpdateDataGrid_Click(object sender, RoutedEventArgs e)
 		{
-			da.UpdateDataGrid(dataGridAllAndDone, comboBoxAfdeling, comboBoxSaelger);
+			
+			da.UpdateDataGrid(dataGridAll, comboBoxAfdeling, comboBoxSaelger, DataGridTab.All);
+			da.UpdateDataGrid(dataGridDone, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Done);
+			da.UpdateDataGrid(dataGridAllAndDone, comboBoxAfdeling, comboBoxSaelger, DataGridTab.AllAndDone);
+			da.UpdateDataGrid(dataGridRed, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Red);
+			da.UpdateDataGrid(dataGridYellow, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Yellow);
+			da.UpdateDataGrid(dataGridGreen, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Green);
+			da.UpdateDataGrid(dataGridExpired, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Expired);
+			
 		}
 	}
 }
