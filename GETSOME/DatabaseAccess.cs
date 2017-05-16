@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections;
+using System.Windows.Media;
 
 namespace GETSOME
 {
@@ -98,7 +100,7 @@ namespace GETSOME
 			return list;
 		}
 
-		public void UpdateDataGrid(DataGrid dg)
+		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger)
 		{
 			dg.Items.Clear();
 			dg.Items.Refresh();
@@ -113,7 +115,19 @@ namespace GETSOME
 				MessageBox.Show("Der skete en fejl.");
 			}
 			string query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID";
-			//ComboBoxPairs cbp = (ComboBoxPairs)comboBoxAfdeling.SelectedItem;
+			ComboBoxPairs cbpAfdeling = (ComboBoxPairs)cbAfdeling.SelectedItem;
+			ComboBoxPairs cbpSaelger = (ComboBoxPairs)cbSaelger.SelectedItem;
+			if (cbpAfdeling._Value != "0")
+			{
+				query += " WHERE Karvil_Saelger.AfdelingID = "+cbpAfdeling._Value;
+				if(cbpSaelger._Value != "0")
+				{
+					query += " AND Karvil_Kunder.SaelgerID = "+cbpSaelger._Value;
+				}
+			}else if (cbpSaelger._Value != "0")
+			{
+				query += " WHERE Karvil_Kunder.SaelgerID = " + cbpSaelger._Value;
+			}
 			query += " ORDER BY Karvil_Kunder.Dato ASC";
 			SqlCommand cmd = new SqlCommand(query, sql);
 			SqlDataReader reader = cmd.ExecuteReader();
@@ -136,6 +150,7 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
+				
 			}
 			sql.Close();
 		}

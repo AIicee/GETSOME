@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,16 +42,16 @@ namespace GETSOME
 			ComboBoxPairs cbp = (ComboBoxPairs)comboBoxAfdeling.SelectedItem;
 			comboBoxSaelger.ItemsSource = da.GetSaelgere(cbp._Value);
 			comboBoxSaelger.SelectedIndex = 0;
+			ComboBoxPairs cbp2 = (ComboBoxPairs)comboBoxSaelger.SelectedItem;
 		}
 
 		private void comboBoxSaelger_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			da.UpdateDataGrid(dataGridAll);
 		}
 
 		private void ButtonUpdateDataGrid_Click(object sender, RoutedEventArgs e)
 		{
-			
+			da.UpdateDataGrid(dataGridAllAndDone, comboBoxAfdeling, comboBoxSaelger);
 		}
 	}
 }

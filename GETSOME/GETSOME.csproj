@@ -65,6 +65,7 @@
     </Compile>
     <Compile Include="ComboBoxPairs.cs" />
     <Compile Include="DatabaseAccess.cs" />
+    <Compile Include="DateColorConverter.cs" />
     <Compile Include="Kunde.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
