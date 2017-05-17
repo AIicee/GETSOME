@@ -15,7 +15,8 @@
 				<DataGrid x:Name="dataGridAll" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
@@ -71,7 +72,8 @@
 				<DataGrid x:Name="dataGridAllAndDone" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
@@ -99,7 +101,8 @@
 				<DataGrid x:Name="dataGridRed" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
@@ -127,7 +130,8 @@
 				<DataGrid x:Name="dataGridYellow" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
@@ -155,7 +159,8 @@
 				<DataGrid x:Name="dataGridGreen" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
@@ -183,7 +188,8 @@
 				<DataGrid x:Name="dataGridExpired" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
-							  AutoGenerateColumns="False" RowHeaderWidth="0">
+							  AutoGenerateColumns="False" RowHeaderWidth="0"
+                              MouseDown="doubleclickFunktion">
 					<DataGrid.Columns>
 						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
 						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
