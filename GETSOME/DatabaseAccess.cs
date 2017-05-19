@@ -33,7 +33,7 @@ namespace GETSOME
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("Der skete en fejl.");
+				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
 				return false;
 			}
 			string query = "Update Karvil_Kunder SET Kontaktet = 1 WHERE ID = " + kunde.ID;
@@ -55,7 +55,7 @@ namespace GETSOME
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("Der skete en fejl.");
+				MessageBox.Show("FEJL: GetAfdelinger() kunne ikke få adgang til databasen.");
 				return list;
 			}
 			string query = "SELECT ID, Navn FROM Karvil_Afdeling ORDER BY Navn ASC";
@@ -80,11 +80,10 @@ namespace GETSOME
 			try
 			{
 				sql.Open();
-				sql.Close();
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("Der skete en fejl.");
+				MessageBox.Show("FEJL: GetSaelgere() kunne ikke få adgang til databasen.");
 				return list;
 			}
 			
@@ -95,7 +94,6 @@ namespace GETSOME
 			}
 			query += " ORDER BY Navn ASC";
 
-			sql.Open();
 			SqlCommand cmd = new SqlCommand(query, sql);
 			SqlDataReader reader = cmd.ExecuteReader();
 			if (reader.HasRows)
@@ -121,7 +119,7 @@ namespace GETSOME
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("Der skete en fejl.");
+				MessageBox.Show("FEJL: UpdateDataGrid() kunne ikke få adgang til databasen.");
 			}
 
 
@@ -136,7 +134,7 @@ namespace GETSOME
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 ";
 					break;
 				case DataGridTab.AllAndDone:
-					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE (Karvil_Kunder.Kontaktet = 0 OR Karvil_Kunder.Kontaktet = 1) ";
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 OR (Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14) ";
 					break;
 				case DataGridTab.Red:
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 12 ";
