@@ -6,215 +6,215 @@
         xmlns:local="clr-namespace:GETSOME"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000">
-	<Window.Resources>
-		<local:DateColorConverter x:Key="DateColorConverter"/>
-	</Window.Resources>
-	<Grid>
+    <Window.Resources>
+        <local:DateColorConverter x:Key="DateColorConverter"/>
+    </Window.Resources>
+    <Grid>
         <TabControl x:Name="tabControl" Margin="20,25,200,25">
-			<TabItem Header="All">
-				<DataGrid x:Name="dataGridAll" 
+            <TabItem Header="All">
+                <DataGrid x:Name="dataGridAll" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="Done">
-				<DataGrid x:Name="dataGridDone" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Done">
+                <DataGrid x:Name="dataGridDone" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="All+Done">
-				<DataGrid x:Name="dataGridAllAndDone" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="All+Done">
+                <DataGrid x:Name="dataGridAllAndDone" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="Red">
-				<DataGrid x:Name="dataGridRed" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Red">
+                <DataGrid x:Name="dataGridRed" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="Yellow">
-				<DataGrid x:Name="dataGridYellow" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Yellow">
+                <DataGrid x:Name="dataGridYellow" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="Green">
-				<DataGrid x:Name="dataGridGreen" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Green">
+                <DataGrid x:Name="dataGridGreen" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-			<TabItem Header="Expired">
-				<DataGrid x:Name="dataGridExpired" 
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Expired">
+                <DataGrid x:Name="dataGridExpired" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
 							  AutoGenerateColumns="False" RowHeaderWidth="0">
-					<DataGrid.Columns>
-						<DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
-						<DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
-						<DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
-						<DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
-						<DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
-							<DataGridTextColumn.CellStyle>
-								<Style TargetType="{x:Type DataGridCell}">
-									<Setter Property="Background">
-										<Setter.Value>
-											<Binding Converter="{StaticResource DateColorConverter}"/>
-										</Setter.Value>
-									</Setter>
-								</Style>
-							</DataGridTextColumn.CellStyle>
-						</DataGridTextColumn>
-						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
-						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
-					</DataGrid.Columns>
-				</DataGrid>
-			</TabItem>
-		</TabControl>
-		<StackPanel Width="150" Height="200" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,30,0">
-			<TextBlock Text="Afdeling:" Margin="0,0,0,5"/>
-			<ComboBox x:Name="comboBoxAfdeling" SelectionChanged="comboBoxAfdeling_SelectionChanged"/>
-			<TextBlock Text="Sælger:" Margin="0,10,0,5"/>
-			<ComboBox x:Name="comboBoxSaelger" SelectionChanged="comboBoxSaelger_SelectionChanged"/>
-			<Button x:Name="ButtonUpdateDatagrid" Height="30" Width="30" Margin="0,20,0,0" HorizontalAlignment="Right" Content="OK" Click="ButtonUpdateDataGrid_Click" />
-		</StackPanel>
-        
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Navn}" Header="Navn"/>
+                        <DataGridTextColumn Binding="{Binding Tlf}" Header="Tlf. Nr."/>
+                        <DataGridTextColumn Binding="{Binding Type}" Header="Type"/>
+                        <DataGridTextColumn Binding="{Binding SaelgerNavn}" Header="Sælger"/>
+                        <DataGridTextColumn Binding="{Binding Dato, StringFormat=dd/MM/yyyy}" Header="Dato" SortDirection="Ascending" >
+                            <DataGridTextColumn.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Setter Property="Background">
+                                        <Setter.Value>
+                                            <Binding Converter="{StaticResource DateColorConverter}"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </DataGridTextColumn.CellStyle>
+                        </DataGridTextColumn>
+                        <DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
+                        <DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Width="150" Height="200" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,50,30,0">
+            <TextBlock Text="Afdeling:" Margin="0,0,0,5"/>
+            <ComboBox x:Name="comboBoxAfdeling" SelectionChanged="comboBoxAfdeling_SelectionChanged"/>
+            <TextBlock Text="Sælger:" Margin="0,10,0,5"/>
+            <ComboBox x:Name="comboBoxSaelger" SelectionChanged="comboBoxSaelger_SelectionChanged"/>
+            <Button x:Name="ButtonUpdateDatagrid" Height="28" Width="150" Margin="0,20,0,0" HorizontalAlignment="Right" Content="OPDATER" Click="ButtonUpdateDataGrid_Click" />
+        </StackPanel>
+
     </Grid>
 </Window>
