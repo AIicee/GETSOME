@@ -62,7 +62,7 @@ namespace GETSOME
             
 			
 		}
-        /*public void doubleclickFunktion(object sender, MouseButtonEventArgs f)
+        public void doubleclickFunktion(object sender, MouseButtonEventArgs f)
         {
             if (f.ClickCount == 2)
             {
@@ -73,6 +73,6 @@ namespace GETSOME
                 }
             }
             
-        }*/
+        }
     }
 }
