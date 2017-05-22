@@ -27,7 +27,7 @@ namespace GETSOME
 
 		public bool IsValid()
 		{
-			if(ID == null || Navn == null || SaelgerID == null)
+			if(ID == 0)
 			{
 				return false;
 			}
