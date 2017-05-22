@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace GETSOME
 {
@@ -186,7 +187,9 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
-                
+				Regex re = new Regex("[a-z]+", RegexOptions.IgnoreCase);
+				Match m = re.Match(header.Header.ToString());
+				header.Header = m.Value + " ("+rows+")";
 			}
 			sql.Close();
 		}
