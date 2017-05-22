@@ -107,7 +107,7 @@ namespace GETSOME
 			return list;
 		}
 
-		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab)
+		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab, TabItem header)
 		{
 			dg.Items.Clear();
 			dg.Items.Refresh();
@@ -186,7 +186,7 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
-				
+                
 			}
 			sql.Close();
 		}

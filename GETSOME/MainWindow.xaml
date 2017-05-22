@@ -11,7 +11,7 @@
 	</Window.Resources>
 	<Grid>
         <TabControl x:Name="tabControl" Margin="20,25,200,25">
-			<TabItem Header="All">
+			<TabItem Header="All" x:Name="TabItemAll">
 				<DataGrid x:Name="dataGridAll" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -40,7 +40,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="Done">
+			<TabItem Header="Done" x:Name="TabItemDone">
 				<DataGrid x:Name="dataGridDone" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -68,7 +68,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="All+Done">
+            <TabItem Header="All+Done" x:Name="TabItemAllDone">
 				<DataGrid x:Name="dataGridAllAndDone" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -97,7 +97,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="Red">
+            <TabItem Header="Red" x:Name="TabItemRed">
 				<DataGrid x:Name="dataGridRed" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -126,7 +126,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="Yellow">
+            <TabItem Header="Yellow" x:Name="TabItemYellow">
 				<DataGrid x:Name="dataGridYellow" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -155,7 +155,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="Green">
+            <TabItem Header="Green" x:Name="TabItemGreen">
 				<DataGrid x:Name="dataGridGreen" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
@@ -184,7 +184,7 @@
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
-			<TabItem Header="Expired">
+            <TabItem Header="Expired" x:Name="TabItemExpired">
 				<DataGrid x:Name="dataGridExpired" 
                               MinColumnWidth="70" Grid.ColumnSpan="2" Margin="0" AlternatingRowBackground="#ddd" 
 							  SelectionMode="Single" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" 
