@@ -22,6 +22,7 @@ namespace GETSOME
     /// </summary>
     public partial class MainWindow : Window
     {
+        
 		DatabaseAccess da;
         public MainWindow()
         {
@@ -62,14 +63,22 @@ namespace GETSOME
             
 			
 		}
-        /*public void doubleclickFunktion(object sender, MouseButtonEventArgs f)
+       
+        public void doubleclickFunktion(object sender, MouseButtonEventArgs e)
         {
-            if (f.ClickCount == 2)
+            TabControl TC = tabControl;
+            TabItem TI = (TabItem)TC.SelectedItem;
+           /* foreach (var control in TI.Content)
+            {
+
+            }*/
+            Kunde kunde =(Kunde)dataGridAll.SelectedItem ;
+            if (e.ClickCount == 2)
             {
                 MessageBoxResult result = MessageBox.Show("Vil du godkende kunden?", "Godkendelse", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    
+                    da.SetAsContacted(kunde);
                 }
             }
             
