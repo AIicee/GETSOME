@@ -62,17 +62,17 @@ namespace GETSOME
             
 			
 		}
-        /*public void doubleclickFunktion(object sender, MouseButtonEventArgs f)
+       public void doubleclickFunktion(object sender, MouseButtonEventArgs f)
         {
             if (f.ClickCount == 2)
             {
                 MessageBoxResult result = MessageBox.Show("Vil du godkende kunden?", "Godkendelse", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                  
+                    
                 }
             }
             
-        }*/
+        }
     }
 }
