@@ -27,11 +27,7 @@ namespace GETSOME
 
 		public bool IsValid()
 		{
-			if(ID == 0)
-			{
-				return false;
-			}
-			return true;
+			return ID != 0;
 		}
 	}
 	
