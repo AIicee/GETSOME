@@ -35,8 +35,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-						<DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-						<DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+						<DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+						<DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
@@ -63,8 +63,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
@@ -92,8 +92,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
@@ -121,8 +121,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
@@ -150,8 +150,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
@@ -179,8 +179,8 @@
 						</DataGridTextColumn>
 						<DataGridTextColumn Binding="{Binding SaelgerID}" Header="Sælger ID"/>
 						<DataGridTextColumn Binding="{Binding ID}" Header="Kunde ID"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding KontaktetString}" Header="Kontaktet"/>
-                        <DataGridTextColumn IsReadOnly="False" Binding="{Binding Note}" Header="Note" Width="250"/>
+                        <DataGridTextColumn Binding="{Binding KontaktetString}" Header="Kontaktet"/>
+                        <DataGridTextColumn Binding="{Binding Note}" Header="Note" Width="250"/>
 					</DataGrid.Columns>
 				</DataGrid>
 			</TabItem>
