@@ -145,7 +145,7 @@ namespace GETSOME
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 ";
 					break;
 				case DataGridTab.AllAndDone:
-					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 OR (Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14) ";
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE (Karvil_Kunder.Kontaktet = 1 OR (Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14)) ";
 					break;
 				case DataGridTab.Red:
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 12 ";
@@ -197,7 +197,7 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
-				Regex re = new Regex("[a-z]+", RegexOptions.IgnoreCase);
+				Regex re = new Regex("[a-z]+\\+?[a-z]+", RegexOptions.IgnoreCase);
 				Match m = re.Match(header.Header.ToString());
 				header.Header = m.Value + " ("+rows+")";
 			}
