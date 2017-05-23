@@ -66,18 +66,49 @@ namespace GETSOME
        
         public void doubleclickFunktion(object sender, MouseButtonEventArgs e)
         {
-            TabControl TC = tabControl;
-            TabItem TI = (TabItem)TC.SelectedItem;
-           
-            Kunde kunde =(Kunde)TC.SelectedItem;
-           
             if (e.ClickCount == 2)
             {
                 MessageBoxResult result = MessageBox.Show("Vil du godkende kunden?", "Godkendelse", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
-                    da.SetAsContacted(kunde);
-                    
+					TabControl TC = tabControl;
+					TabItem TI = (TabItem)TC.SelectedItem;
+					DataGrid dg;
+					switch (TI.Name)
+					{
+						case "TabItemAll":
+							dg = dataGridAll;
+							break;
+						case "TabItemDone":
+							dg = dataGridDone;
+							break;
+						case "TabItemAllDone":
+							dg = dataGridAllAndDone;
+							break;
+						case "TabItemRed":
+							dg = dataGridRed;
+							break;
+						case "TabItemYellow":
+							dg = dataGridYellow;
+							break;
+						case "TabItemGreen":
+							dg = dataGridGreen;
+							break;
+						case "TabItemExpired":
+							dg = dataGridExpired;
+							break;
+						default:
+							dg = null;
+							break;
+					}
+					if(dg == null)
+					{
+						throw new Exception("FEJL: Der er ikke valgt en kunde.");
+					}
+					if(da.SetAsContacted((Kunde)dg.SelectedItem))
+					{
+						MessageBox.Show("Success!");
+					}
                 }
             }
             

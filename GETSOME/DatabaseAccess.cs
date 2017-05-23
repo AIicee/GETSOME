@@ -25,7 +25,7 @@ namespace GETSOME
 	public class DatabaseAccess
 	{
 
-		public bool SetAsContacted(Kunde kunde)
+		public bool SetAsContacted(Kunde kunde, string note = "")
 		{
 			if (kunde.Kontaktet)
 			{
@@ -46,8 +46,9 @@ namespace GETSOME
 				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
 				return false;
 			}
-			string query = "Update Karvil_Kunder SET Kontaktet = 1 WHERE ID = " + kunde.ID;
+			string query = "Update Karvil_Kunder SET Kontaktet = 1 "+(note != "" ? ", Note = @note":"")+" WHERE ID = " + kunde.ID;
 			SqlCommand cmd = new SqlCommand(query, sql);
+			cmd.Parameters.AddWithValue("@note", note);
 			cmd.ExecuteNonQuery();
 			sql.Close();
 			return true;
