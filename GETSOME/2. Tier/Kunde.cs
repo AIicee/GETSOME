@@ -24,6 +24,11 @@ namespace GETSOME
 		public string Note { get; set; }
 		public int SaelgerID { get; set; }
 		public string SaelgerNavn { get; set; }
+
+		public bool IsValid()
+		{
+			return ID != 0;
+		}
 	}
 	
 }

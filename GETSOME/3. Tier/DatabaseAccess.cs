@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Collections;
 using System.Windows.Media;
+using System.Text.RegularExpressions;
 
 namespace GETSOME
 {
@@ -24,8 +25,17 @@ namespace GETSOME
 	public class DatabaseAccess
 	{
 
-		public bool SetAsContacted(Kunde kunde)
+		public bool SetAsContacted(Kunde kunde, string note = "")
 		{
+			if (kunde.Kontaktet)
+			{
+				MessageBox.Show("Denne kunde er allerede blevet kontaktet.");
+				return false;
+			}
+			if (!kunde.IsValid())
+			{
+				throw new Exception("FEJL: SetAsContacted(kunde) -> kunde.IsValid() -> Kunden er ikke korrekt valideret");
+			}
 			SqlConnection sql = new SqlConnection("Data Source=ealdb1.eal.local;Initial Catalog=EJL34_DB;User ID=ejl34_usr;Password=Baz1nga34");
 			try
 			{
@@ -36,8 +46,9 @@ namespace GETSOME
 				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
 				return false;
 			}
-			string query = "Update Karvil_Kunder SET Kontaktet = 1 WHERE ID = " + kunde.ID;
+			string query = "Update Karvil_Kunder SET Kontaktet = 1 "+(note != "" ? ", Note = @note":"")+" WHERE ID = " + kunde.ID;
 			SqlCommand cmd = new SqlCommand(query, sql);
+			cmd.Parameters.AddWithValue("@note", note);
 			cmd.ExecuteNonQuery();
 			sql.Close();
 			return true;
@@ -107,7 +118,7 @@ namespace GETSOME
 			return list;
 		}
 
-		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab)
+		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab, TabItem header)
 		{
 			dg.Items.Clear();
 			dg.Items.Refresh();
@@ -134,7 +145,7 @@ namespace GETSOME
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 ";
 					break;
 				case DataGridTab.AllAndDone:
-					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 1 OR (Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14) ";
+					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE (Karvil_Kunder.Kontaktet = 1 OR (Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) <= 14)) ";
 					break;
 				case DataGridTab.Red:
 					query = "SELECT Karvil_Kunder.ID, Karvil_Kunder.Navn, Karvil_Kunder.Tlf, Karvil_Kunder.Type, Karvil_Kunder.Dato, Karvil_Kunder.Kontaktet, Karvil_Kunder.Note, Karvil_Kunder.SaelgerID, Karvil_Saelger.Navn as SaelgerNavn FROM Karvil_Kunder INNER JOIN Karvil_Saelger ON Karvil_Kunder.SaelgerID = Karvil_Saelger.ID WHERE Karvil_Kunder.Kontaktet = 0 AND DATEDIFF(DAY, Karvil_Kunder.Dato, getdate()) > 12 ";
@@ -186,7 +197,9 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
-				
+				Regex re = new Regex("[a-z]+\\+?[a-z]+", RegexOptions.IgnoreCase);
+				Match m = re.Match(header.Header.ToString());
+				header.Header = m.Value + " ("+rows+")";
 			}
 			sql.Close();
 		}
