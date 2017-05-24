@@ -30,6 +30,7 @@ namespace GETSOME
 			KundeNavnText.Text = kunde.Navn;
 		}
 
+		// Når brugeren klikker på OK knappen indsendes kundens nye data til databasen
 		private void KontaktetOK_Click(object sender, RoutedEventArgs e)
 		{
 			if(da.SetAsContacted(kunde, KontaktetNoteBox.Text))
@@ -37,12 +38,12 @@ namespace GETSOME
 				this.Close();
 			}
 		}
-
+		// Når brugeren klikker på annuller knappen, lukkes vinduet
 		private void KontaktetAnnuller_Click(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}
-
+		// Når brugeren klikker på enter knappen indsendes kundens nye data til databasen
 		private void KontaktNoteBox_EnterKey(object sender, KeyEventArgs e)
 		{
 			if(e.Key == Key.Enter)

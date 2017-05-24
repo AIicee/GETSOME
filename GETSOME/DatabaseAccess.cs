@@ -25,13 +25,16 @@ namespace GETSOME
 	public class DatabaseAccess
 	{
 
+		// Når en kunde er blevet opringet så skal databasen opdateres
 		public bool SetAsContacted(Kunde kunde, string note = "")
 		{
+			// Tjek om kunden allerede er blevet kontaktet
 			if (kunde.Kontaktet)
 			{
 				MessageBox.Show("Denne kunde er allerede blevet kontaktet.");
 				return false;
 			}
+			// Tjek om kundens data er blevet udfyldt korrekt
 			if (!kunde.IsValid())
 			{
 				throw new Exception("FEJL: SetAsContacted(kunde) -> kunde.IsValid() -> Kunden er ikke korrekt valideret");
@@ -46,14 +49,17 @@ namespace GETSOME
 				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
 				return false;
 			}
+			// Når alt er OK sendes en opdatering til databasen som sætter kunden som kontaktet + en mulig note
 			string query = "Update Karvil_Kunder SET Kontaktet = 1 "+(note != "" ? ", Note = @note":"")+" WHERE ID = " + kunde.ID;
 			SqlCommand cmd = new SqlCommand(query, sql);
 			cmd.Parameters.AddWithValue("@note", note);
 			cmd.ExecuteNonQuery();
 			sql.Close();
+			// Kundens data blev sendt til databasen og er blevet opdateret
 			return true;
 		}
 
+		// Henter alle afdelinger fra databasen til udfyldelse af dropdown menuen i main window
 		public List<ComboBoxPairs> GetAfdelinger()
 		{
 			
@@ -83,6 +89,7 @@ namespace GETSOME
 			return list;
 		}
 
+		// Henter alle sælgere fra databasen til udfyldelse af dropdown menuen i main window
 		public List<ComboBoxPairs> GetSaelgere(string afdeling)
 		{
 			List<ComboBoxPairs> list = new List<ComboBoxPairs>();
@@ -118,8 +125,11 @@ namespace GETSOME
 			return list;
 		}
 
+		// et datagrid bliver fyldt ud med kunder fra databasen.
+		// dataen bliver uddelt mellem 7 forskellige grids alt efter kundens data (kontaktet & dato)
 		public void UpdateDataGrid(DataGrid dg, ComboBox cbAfdeling, ComboBox cbSaelger, DataGridTab tab, TabItem header)
 		{
+			// Slet gammel data først
 			dg.Items.Clear();
 			dg.Items.Refresh();
 
@@ -133,9 +143,8 @@ namespace GETSOME
 				MessageBox.Show("FEJL: UpdateDataGrid() kunne ikke få adgang til databasen.");
 			}
 
-
+			// En query bliver bygget alt efter den valgte datagrid tab
 			string query = "";
-
 			switch (tab)
 			{
 				case DataGridTab.All:
@@ -164,13 +173,19 @@ namespace GETSOME
 
 			ComboBoxPairs cbpAfdeling = (ComboBoxPairs)cbAfdeling.SelectedItem;
 			ComboBoxPairs cbpSaelger = (ComboBoxPairs)cbSaelger.SelectedItem;
+
+			// Hvis der er specificeret en afdeling
 			if (cbpAfdeling._Value != "0")
 			{
 				query += " AND Karvil_Saelger.AfdelingID = "+cbpAfdeling._Value;
+
+				// og hvis der er specificeret en sælger
 				if(cbpSaelger._Value != "0")
 				{
 					query += " AND Karvil_Kunder.SaelgerID = "+cbpSaelger._Value;
 				}
+			
+			// Hvis der kun er specificeret en sælger (ingen afdeling)
 			}else if (cbpSaelger._Value != "0")
 			{
 				query += " AND Karvil_Kunder.SaelgerID = " + cbpSaelger._Value;
@@ -183,6 +198,7 @@ namespace GETSOME
 				int rows = 0;
 				while (reader.Read())
 				{
+					// Dataen fra databasen bliver læst og indsat i kunde objekter
 					rows++;
 					dg.Items.Add(new Kunde()
 					{
@@ -197,6 +213,8 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
+
+				// Datagrid tab-navnene bliver opdateret med en sum af alle kunder i den tab
 				Regex re = new Regex("[a-z+]+", RegexOptions.IgnoreCase);
 				Match m = re.Match(header.Header.ToString());
 				header.Header = m.Value + " ("+rows+")";

@@ -9,6 +9,7 @@ using System.Windows.Data;
 
 namespace GETSOME
 {
+	// Kunde klassen
 	public class Kunde
 	{
 		public int ID { get; set; }
@@ -17,6 +18,8 @@ namespace GETSOME
 		public string Type { get; set; }
 		public DateTime Dato { get; set; }
 		public bool Kontaktet { get; set; }
+
+		// Bruges til at konvertere en boolean til en string, så den kan vises som tekst i datagrid
 		public string KontaktetString
 		{
 			get { return Kontaktet == true ? "Ja" : "Nej"; }
@@ -25,6 +28,7 @@ namespace GETSOME
 		public int SaelgerID { get; set; }
 		public string SaelgerNavn { get; set; }
 
+		// Tjekker om kundens data er blevet hentet/indtastet korrekt
 		public bool IsValid()
 		{
 			return ID != 0;

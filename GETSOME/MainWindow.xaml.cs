@@ -28,31 +28,30 @@ namespace GETSOME
         {
 			da = new DatabaseAccess();
             InitializeComponent();
-			// Afdeling combobox
 
+			// Dropdown menuerne bliver klargjordt til brug at ComboBoxPairs klassen (se ComboBoxPairs.cs)
 			comboBoxAfdeling.DisplayMemberPath = "_Key";
 			comboBoxAfdeling.SelectedValuePath = "_Value";
+			// Dropdown menuen for afdelinger bliver udfyldt med alle afdelinger
 			comboBoxAfdeling.ItemsSource = da.GetAfdelinger();
 			comboBoxAfdeling.SelectedIndex = 0;
 		}
 
 		private void comboBoxAfdeling_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			// Dropdown menuerne bliver klargjordt til brug at ComboBoxPairs klassen (se ComboBoxPairs.cs)
 			comboBoxSaelger.DisplayMemberPath = "_Key";
 			comboBoxSaelger.SelectedValuePath = "_Value";
 			ComboBoxPairs cbp = (ComboBoxPairs)comboBoxAfdeling.SelectedItem;
+			// Dropdown menuen for sælgere bliver udfyldt med alle sælgere
 			comboBoxSaelger.ItemsSource = da.GetSaelgere(cbp._Value);
 			comboBoxSaelger.SelectedIndex = 0;
 			ComboBoxPairs cbp2 = (ComboBoxPairs)comboBoxSaelger.SelectedItem;
 		}
 
-		private void comboBoxSaelger_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-		}
 
 		private void ButtonUpdateDataGrid_Click(object sender, RoutedEventArgs e)
 		{
-			
 			da.UpdateDataGrid(dataGridAll, comboBoxAfdeling, comboBoxSaelger, DataGridTab.All, TabItemAll);
 			da.UpdateDataGrid(dataGridDone, comboBoxAfdeling, comboBoxSaelger, DataGridTab.Done, TabItemDone);
 			da.UpdateDataGrid(dataGridAllAndDone, comboBoxAfdeling, comboBoxSaelger, DataGridTab.AllAndDone, TabItemAllDone);
