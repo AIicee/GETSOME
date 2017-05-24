@@ -31,7 +31,10 @@ namespace GETSOME
 
 		private void KontaktetOK_Click(object sender, RoutedEventArgs e)
 		{
-			da.SetAsContacted(kunde, KontaktetNoteBox.Text);
+			if(da.SetAsContacted(kunde, KontaktetNoteBox.Text))
+			{
+				this.Close();
+			}
 		}
 
 		private void KontaktetAnnuller_Click(object sender, RoutedEventArgs e)
