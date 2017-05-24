@@ -41,7 +41,7 @@ namespace GETSOME
 			{
 				sql.Open();
 			}
-			catch (Exception)
+			catch (SqlException)
 			{
 				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
 				return false;
@@ -64,7 +64,7 @@ namespace GETSOME
 			{
 				sql.Open();
 			}
-			catch (Exception)
+			catch (SqlException)
 			{
 				MessageBox.Show("FEJL: GetAfdelinger() kunne ikke få adgang til databasen.");
 				return list;
@@ -92,7 +92,7 @@ namespace GETSOME
 			{
 				sql.Open();
 			}
-			catch (Exception)
+			catch (SqlException)
 			{
 				MessageBox.Show("FEJL: GetSaelgere() kunne ikke få adgang til databasen.");
 				return list;
@@ -128,7 +128,7 @@ namespace GETSOME
 			{
 				sql.Open();
 			}
-			catch (Exception)
+			catch (SqlException)
 			{
 				MessageBox.Show("FEJL: UpdateDataGrid() kunne ikke få adgang til databasen.");
 			}
