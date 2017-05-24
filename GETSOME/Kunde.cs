@@ -28,11 +28,13 @@ namespace GETSOME
 		public int SaelgerID { get; set; }
 		public string SaelgerNavn { get; set; }
 
+		/*
 		// Tjekker om kundens data er blevet hentet/indtastet korrekt
 		public bool IsValid()
 		{
 			return ID != 0;
 		}
+		*/
 	}
 	
 }

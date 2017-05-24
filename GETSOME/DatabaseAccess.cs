@@ -34,11 +34,13 @@ namespace GETSOME
 				MessageBox.Show("Denne kunde er allerede blevet kontaktet.");
 				return false;
 			}
+			/*
 			// Tjek om kundens data er blevet udfyldt korrekt
 			if (!kunde.IsValid())
 			{
 				throw new Exception("FEJL: SetAsContacted(kunde) -> kunde.IsValid() -> Kunden er ikke korrekt valideret");
 			}
+			*/
 			SqlConnection sql = new SqlConnection("Data Source=ealdb1.eal.local;Initial Catalog=EJL34_DB;User ID=ejl34_usr;Password=Baz1nga34");
 			try
 			{
