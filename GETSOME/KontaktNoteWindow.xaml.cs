@@ -27,6 +27,7 @@ namespace GETSOME
 			InitializeComponent();
 			kunde = k;
 			da = d;
+			KundeNavnText.Text = kunde.Navn;
 		}
 
 		private void KontaktetOK_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,17 @@ namespace GETSOME
 		private void KontaktetAnnuller_Click(object sender, RoutedEventArgs e)
 		{
 			this.Close();
+		}
+
+		private void KontaktNoteBox_EnterKey(object sender, KeyEventArgs e)
+		{
+			if(e.Key == Key.Enter)
+			{
+				if (da.SetAsContacted(kunde, KontaktetNoteBox.Text))
+				{
+					this.Close();
+				}
+			}
 		}
 	}
 }

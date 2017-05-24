@@ -9,9 +9,9 @@
 	<Grid>
 		<Button x:Name="KontaktetOK" Content="OK" HorizontalAlignment="Left" Margin="90,0,0,20" VerticalAlignment="Bottom" Width="75" Height="25" Click="KontaktetOK_Click"/>
 		<Button x:Name="KontaktetAnnuller" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,90,20" VerticalAlignment="Bottom" Width="75" Height="25" Click="KontaktetAnnuller_Click"/>
-		<TextBox x:Name="KontaktetNoteBox" HorizontalAlignment="Right" Height="23" Margin="0,68,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="237"/>
+		<TextBox x:Name="KontaktetNoteBox" HorizontalAlignment="Right" Height="23" Margin="0,68,50,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="237" KeyDown="KontaktNoteBox_EnterKey"/>
 		<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,70,0,0" TextWrapping="Wrap" Text="Note:" VerticalAlignment="Top" Width="50" Height="17"/>
-		<TextBlock x:Name="textBlock1" HorizontalAlignment="Center" Margin="0,25,0,0" TextWrapping="Wrap" Text="Kunde: " VerticalAlignment="Top" FontSize="18"/>
+		<TextBlock x:Name="KundeNavnText" HorizontalAlignment="Center" Margin="0,25,0,0" TextWrapping="Wrap" Text="Kunde: " VerticalAlignment="Top" FontSize="18"/>
 
 	</Grid>
 </Window>
