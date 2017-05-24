@@ -20,6 +20,8 @@ namespace GETSOME
 	public partial class KontaktNoteWindow : Window
 	{
 		Kunde kunde;
+		DatabaseAccess da;
+
 		public KontaktNoteWindow(Kunde k)
 		{
 			InitializeComponent();
