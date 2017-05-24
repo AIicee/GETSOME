@@ -102,10 +102,7 @@ namespace GETSOME
 				{
 					throw new Exception("FEJL: Der er ikke valgt en kunde.");
 				}
-				if (da.SetAsContacted((Kunde)dg.SelectedItem))
-				{
-					MessageBox.Show("Success!");
-				}
+				new KontaktNoteWindow((Kunde)dg.SelectedItem, da);
 			}
             
         }

@@ -22,15 +22,21 @@ namespace GETSOME
 		Kunde kunde;
 		DatabaseAccess da;
 
-		public KontaktNoteWindow(Kunde k)
+		public KontaktNoteWindow(Kunde k, DatabaseAccess d)
 		{
 			InitializeComponent();
 			kunde = k;
-
+			da = d;
 		}
-		public void KontaktKunde()
+
+		private void KontaktetOK_Click(object sender, RoutedEventArgs e)
 		{
-			
+			da.SetAsContacted(kunde, KontaktetNoteBox.Text);
+		}
+
+		private void KontaktetAnnuller_Click(object sender, RoutedEventArgs e)
+		{
+			this.Close();
 		}
 	}
 }
