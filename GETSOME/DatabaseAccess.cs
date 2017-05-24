@@ -197,7 +197,7 @@ namespace GETSOME
 						SaelgerNavn = reader["SaelgerNavn"].ToString()
 					});
 				}
-				Regex re = new Regex("[a-z]+\\+?[a-z]+", RegexOptions.IgnoreCase);
+				Regex re = new Regex("[a-z+]+", RegexOptions.IgnoreCase);
 				Match m = re.Match(header.Header.ToString());
 				header.Header = m.Value + " ("+rows+")";
 			}
