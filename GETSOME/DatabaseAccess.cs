@@ -35,6 +35,12 @@ namespace GETSOME
 				return false;
 			}
 			/*
+			// -- Udkommenteret
+			// -- Vi har valgt at udkommentere dette da det ikke er nødvendigt for programmet i sin nuværende tilstand.
+			// -- Hvis man skulle udvide programmet med (f.eks) importering af ekstern data fra andre programmer
+			// -- så vil det være en god ide at have ekstra tjek på dataen, sådan så man ikke prøver at indsætte invalid data
+			// -- ind i vores system, hvilket ville kunne skabe mulige problemer og fejl/crashes.
+			//
 			// Tjek om kundens data er blevet udfyldt korrekt
 			if (!kunde.IsValid())
 			{
