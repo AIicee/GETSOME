@@ -54,7 +54,7 @@ namespace GETSOME
 			}
 			catch (SqlException)
 			{
-				MessageBox.Show("FEJL: SetAsContacted() kunne ikke få adgang til databasen.");
+				MessageBox.Show("FEJL: Kunne ikke få adgang til databasen.");
 				return false;
 			}
 			// Når alt er OK sendes en opdatering til databasen som sætter kunden som kontaktet + en mulig note
@@ -80,7 +80,7 @@ namespace GETSOME
 			}
 			catch (SqlException)
 			{
-				MessageBox.Show("FEJL: GetAfdelinger() kunne ikke få adgang til databasen.");
+				MessageBox.Show("FEJL: Kunne ikke få adgang til databasen.");
 				return list;
 			}
 			string query = "SELECT ID, Navn FROM Karvil_Afdeling ORDER BY Navn ASC";
@@ -109,7 +109,7 @@ namespace GETSOME
 			}
 			catch (SqlException)
 			{
-				MessageBox.Show("FEJL: GetSaelgere() kunne ikke få adgang til databasen.");
+				MessageBox.Show("FEJL: Kunne ikke få adgang til databasen.");
 				return list;
 			}
 			
@@ -148,7 +148,7 @@ namespace GETSOME
 			}
 			catch (SqlException)
 			{
-				MessageBox.Show("FEJL: UpdateDataGrid() kunne ikke få adgang til databasen.");
+				MessageBox.Show("FEJL: Kunne ikke få adgang til databasen.");
 			}
 
 			// En query bliver bygget alt efter den valgte datagrid tab
